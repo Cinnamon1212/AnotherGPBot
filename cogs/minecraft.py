@@ -22,7 +22,10 @@ class minecraft(commands.Cog):
                         ip = str(data['ip'])
                         motd = data['motd']['clean']
                         players = data['players']['online']
-                        plist = data['players']['list']
+                        if 0 < players:
+                            plist = data['players']['list']
+                        else:
+                            plist = "No players online"
                         mcport = data['port']
                         mcversion = data['version']
                         online = data['online']
