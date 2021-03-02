@@ -41,29 +41,6 @@ class reddit_commands(commands.Cog):
         else:
             await ctx.send("Please use this command in an NSFW channel")
 
-    @commands.command(name="boobs", aliases=['boob', 'tits'], description="Random post from the boobs subreddit")
-    async def boobs(self, ctx):
-        if ctx.channel.is_nsfw():
-            subreddit = reddit.subreddit("boobs")
-            all_subs = []
-
-            top = subreddit.top(limit=50)
-
-            for submission in top:
-                all_subs.append(submission)
-
-            random_sub = random.choice(all_subs)
-
-            name = random_sub.title
-            url = random_sub.url
-
-            embed = discord.Embed(title=name, color=discord.Color.gold())
-            embed.set_image(url=url)
-            embed.set_footer(text=f"Asked by {ctx.author.name}")
-
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("Please use this command in an NSFW channel")
 
     @commands.command(name="minecraft", aliases=['mc'], description="Random post from the minecraft subreddit")
     async def minecraft(self, ctx):
